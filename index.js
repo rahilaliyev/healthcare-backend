@@ -6,7 +6,7 @@ require("firebase/firestore");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 var cors = require("cors");
-app.use(cors());
+app.use(cors({ origin: "*" }));
 var firebaseConfig = {
   apiKey: "AIzaSyDFzqyobQKGcUJgMpAbUdEaOvGYcI_3TiY",
   authDomain: "atl-project-5f0cf.firebaseapp.com",
