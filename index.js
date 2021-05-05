@@ -1,3 +1,6 @@
+import * as functions from "firebase-functions";
+import * as express from "express";
+
 const express = require("express");
 const app = express();
 const firebase = require("firebase/app");
@@ -31,4 +34,34 @@ app.get("/getData", (req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
+});
+
+//initialize firebase inorder to access its services
+admin.initializeApp(functions.config().firebase);
+
+//define google cloud function name
+export const webApi = functions.https.onRequest(app);
+
+// Create new user
+app.post("/users", async (req, res) => {
+  try {
+    const user = {
+      firstName: req.body["firstName"],
+      lastName: req.body["lastName"],
+      email: req.body["email"],
+      areaNumber: req.body["areaNumber"],
+      department: req.body["department"],
+      id: req.body["id"],
+      contactNumber: req.body["contactNumber"],
+    };
+
+    const newDoc = await db.collection("data").add(user);
+    res.status(201).send(`Created a new user: ${newDoc.id}`);
+  } catch (error) {
+    res
+      .status(400)
+      .send(
+        `User should cointain firstName, lastName, email, areaNumber, department, id and contactNumber!!!`
+      );
+  }
 });
