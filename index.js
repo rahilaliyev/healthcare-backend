@@ -36,6 +36,7 @@ app.post("/users", (req, res) => {
     success: "200 response",
     res: "You are now just talked with server",
   });
+  db.collection("data").add(data);
 });
 
 app.listen(port, () => {
