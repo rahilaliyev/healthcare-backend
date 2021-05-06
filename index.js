@@ -38,7 +38,7 @@ app.post("/users", (req, res) => {
   });
   db.collection("data")
     .doc("XLxHb8O2A3EYa2YAt5Jq")
-    .add({ List12: ["salam", "email"] });
+    .update({ List12: ["salam", "email"] });
 });
 
 app.listen(port, () => {
