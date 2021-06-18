@@ -41,6 +41,16 @@ app.post("/users", (req, res) => {
     .update({ List12: data });
 });
 
+app.post("/deleteUsers", (req,res) => {
+  const index = req.body;
+  res.send(index, "Getdi")
+  db.collection("data")
+    .doc("XLxHb8O2A3EYa2YAt5Jq")
+    .update({
+      Lists:  firebase.firestore.FieldValue.arrayRemove(index)
+    });
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
