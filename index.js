@@ -41,7 +41,7 @@ app.post("/users", (req, res) => {
     .update({ List12: data });
 });
 
-app.post("/deleteUsers", (req,res) => {
+app.delete("/deleteUsers", (req,res) => {
   const index = req.body;
   res.send(index, "Getdi")
   db.collection("data")
