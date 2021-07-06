@@ -31,14 +31,14 @@ app.get("/getData", (req, res) => {
 
 app.post("/users", (req, res) => {
   const data = req.body;
-  console.log(data);
-  res.send({
-    success: "200 response",
-    res: "You are now just talked with server",
-  });
+
   db.collection("data")
-    .doc("XLxHb8O2A3EYa2YAt5Jq")
-    .update({ List12: data });
+    .doc("6IWWfXYYe2jqsUCvQInA")
+    .update({
+      Lists: firebase.firestore.FieldValue.arrayUnion(data),
+    });
+
+  res.send(data);
 });
 
 app.delete("/deleteUsers", (req,res) => {
@@ -50,6 +50,7 @@ app.delete("/deleteUsers", (req,res) => {
       Lists:  firebase.firestore.FieldValue.arrayRemove(index)
     });
 })
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
