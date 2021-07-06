@@ -33,7 +33,7 @@ app.post("/users", (req, res) => {
   const data = req.body;
 
   db.collection("data")
-    .doc("6IWWfXYYe2jqsUCvQInA")
+    .doc("XLxHb8O2A3EYa2YAt5Jq")
     .update({
       Lists: firebase.firestore.FieldValue.arrayUnion(data),
     });
