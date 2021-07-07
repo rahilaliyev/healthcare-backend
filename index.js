@@ -40,7 +40,7 @@ app.post("/users", (req, res) => {
 });
 
 
-app.post("/deleteUser", (req, res) => {
+app.delete("/deleteUser", (req, res) => {
   const data = req.body;
   db.collection("data")
     .doc("XLxHb8O2A3EYa2YAt5Jq")
