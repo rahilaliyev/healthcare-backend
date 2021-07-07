@@ -37,19 +37,20 @@ app.post("/users", (req, res) => {
     .update({
       Lists: firebase.firestore.FieldValue.arrayUnion(data),
     });
-
   res.send(data);
 });
 
-app.delete("/deleteUsers", (req,res) => {
-  const index = req.body;
-  res.send(index, "Getdi")
+
+app.post("/deleteuser", (req, res) => {
+  const data = req.body;
   db.collection("data")
     .doc("XLxHb8O2A3EYa2YAt5Jq")
     .update({
-      Lists:  firebase.firestore.FieldValue.arrayRemove(index)
+      Lists: firebase.firestore.FieldValue.arrayRemove(data),
     });
-})
+  res.send(data);
+});
+
 
 
 app.listen(port, () => {
