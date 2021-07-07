@@ -31,7 +31,6 @@ app.get("/getData", (req, res) => {
 
 app.post("/users", (req, res) => {
   const data = req.body;
-
   db.collection("data")
     .doc("XLxHb8O2A3EYa2YAt5Jq")
     .update({
@@ -41,12 +40,12 @@ app.post("/users", (req, res) => {
 });
 
 
-app.post("/deleteuser", (req, res) => {
+app.post("/deleteUser", (req, res) => {
   const data = req.body;
   db.collection("data")
     .doc("XLxHb8O2A3EYa2YAt5Jq")
     .update({
-      Lists: firebase.firestore.FieldValue.arrayRemove(data),
+      List2: firebase.firestore.FieldValue.arrayRemove(data),
     });
   res.send(data);
 });
